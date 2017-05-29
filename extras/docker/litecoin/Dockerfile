@@ -46,4 +46,4 @@ RUN ./autogen.sh && \
 EXPOSE 9332 9333 19332 19333
 
 # NOTE: Defaults to running on mainnet, specify -e TESTNET=1 to start up on testnet
-ENTRYPOINT ["/usr/local/bin/start.sh -datadir=/home/litecoin/.litecoin"]
+ENTRYPOINT ["/usr/local/bin/start.sh"]
