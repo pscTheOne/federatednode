@@ -2,6 +2,18 @@ FROM counterparty/base
 
 MAINTAINER liteparty Developers <contact@liteparty.io>
 
+# Create the user who will run litecoind
+RUN useradd -ms /bin/bash litecoin
+
+
+# Set up litecoin dirs and files
+RUN mkdir -p /home/litecoin/.litecoin/
+COPY litecoin.conf /home/litecoin/.litecoin/
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod a+x /usr/local/bin/start.sh
+RUN chown litecoin:litecoin /home/litecoin/.litecoin
+RUN chown litecoin:litecoin /home/litecoin/.litecoin/litecoin.conf
+
 #Add bitcoin ppa and install tools needed to fetch and compile litecoin.
 RUN add-apt-repository ppa:bitcoin/bitcoin && \
     apt-get update && \
@@ -30,18 +42,8 @@ RUN ./autogen.sh && \
     make && \
     make install
 
-# Create the user who will run litecoind
-RUN useradd -ms /bin/bash litecoin
-
-# Set up litecoin dirs and files
-RUN mkdir -p /home/litecoin/.litecoin/
-COPY litecoin.conf /home/litecoin/.litecoin/
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod a+x /usr/local/bin/start.sh
-RUN chown litecoin:litecoin /home/litecoin/.litecoin
-RUN chown litecoin:litecoin /home/litecoin/.litecoin/litecoin.conf
 
 EXPOSE 9332 9333 19332 19333
 
 # NOTE: Defaults to running on mainnet, specify -e TESTNET=1 to start up on testnet
-ENTRYPOINT ["start.sh -datadir=/home/litecoin/.litecoin;"]
+ENTRYPOINT ["/usr/local/bin/start.sh -datadir=/home/litecoin/.litecoin"]
