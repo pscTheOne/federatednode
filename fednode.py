@@ -24,27 +24,27 @@ SCRIPTDIR = os.path.dirname(os.path.realpath(__file__))
 FEDNODE_CONFIG_FILE = ".fednode.config"
 FEDNODE_CONFIG_PATH = os.path.join(SCRIPTDIR, FEDNODE_CONFIG_FILE)
 
-REPO_BASE_HTTPS = "https://github.com/CounterpartyXCP/{}.git"
-REPO_BASE_SSH = "git@github.com:CounterpartyXCP/{}.git"
+REPO_BASE_HTTPS = "https://github.com/liteparty/{}.git"
+REPO_BASE_SSH = "git@github.com:liteparty/{}.git"
 REPOS_BASE = ['counterparty-lib', 'counterparty-cli']
 REPOS_COUNTERBLOCK = REPOS_BASE + ['counterblock', ]
 REPOS_FULL = REPOS_COUNTERBLOCK + ['counterwallet', 'armory-utxsvr']
 
 HOST_PORTS_USED = {
-    'base': [8332, 18332, 4000, 14000],
-    'counterblock': [8332, 18332, 4000, 14000, 4100, 14100, 27017],
-    'full': [8332, 18332, 4000, 14000, 4100, 14100, 80, 443, 27017]
+    'base': [9332, 19332, 4000, 14000],
+    'counterblock': [9332, 19332, 4000, 14000, 4100, 14100, 27017],
+    'full': [9332, 19332, 4000, 14000, 4100, 14100, 80, 443, 27017]
 }
 VOLUMES_USED = {
-    'base': ['bitcoin-data', 'counterparty-data'],
-    'counterblock': ['bitcoin-data', 'counterparty-data', 'counterblock-data', 'mongodb-data'],
-    'full': ['bitcoin-data', 'counterparty-data', 'counterblock-data', 'mongodb-data', 'armory-data']
+    'base': ['litecoin-data', 'counterparty-data'],
+    'counterblock': ['litecoin-data', 'counterparty-data', 'counterblock-data', 'mongodb-data'],
+    'full': ['litecoin-data', 'counterparty-data', 'counterblock-data', 'mongodb-data', 'armory-data']
 }
 UPDATE_CHOICES = ['counterparty', 'counterparty-testnet', 'counterblock',
                   'counterblock-testnet', 'counterwallet', 'armory-utxsvr', 'armory-utxsvr-testnet']
 REPARSE_CHOICES = ['counterparty', 'counterparty-testnet', 'counterblock', 'counterblock-testnet']
 VACUUM_CHOICES = ['counterparty', 'counterparty-testnet']
-SHELL_CHOICES = UPDATE_CHOICES + ['mongodb', 'redis', 'bitcoin', 'bitcoin-testnet']
+SHELL_CHOICES = UPDATE_CHOICES + ['mongodb', 'redis', 'litecoin', 'litecoin-testnet']
 
 # set in setup_env()
 IS_WINDOWS = None
