@@ -13,26 +13,25 @@ COPY start.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
 RUN chown litecoin:litecoin /home/litecoin/.litecoin
 RUN chown litecoin:litecoin /home/litecoin/.litecoin/litecoin.conf
-
+RUN apt-get update && \
+    apt-get install --yes \
+      software-properties-common
 #Add bitcoin ppa and install tools needed to fetch and compile litecoin.
 RUN add-apt-repository ppa:bitcoin/bitcoin && \
-    apt-get update && \
     apt-get install --yes \
-      software-properties-common \
-      python-software-properties \
-      python3-software-properties \       
-      build-essential \
-      libtool \
-      autotools-dev \
-      automake \
-      pkg-config \
-      bsdmainutils \
-      libssl-dev \
-      libevent-dev \
-      libboost-all-dev \
-      libdb4.8-dev \
-      libdb4.8++-dev \
-      git
+    software-properties-common \   
+    build-essential \
+    libtool \
+    autotools-dev \
+    automake \
+    pkg-config \
+    bsdmainutils \
+    libssl-dev \
+    libevent-dev \
+    libboost-all-dev \
+    libdb4.8-dev \
+    libdb4.8++-dev \
+    git
 
 WORKDIR /root
 RUN git clone https://github.com/liteparty/litecoin -b 0.13
