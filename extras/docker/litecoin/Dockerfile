@@ -17,7 +17,8 @@ RUN apt-get update && \
     apt-get install --yes \
       software-properties-common
 #Add bitcoin ppa and install tools needed to fetch and compile litecoin.
-RUN add-apt-repository ppa:bitcoin/bitcoin && \
+RUN add-apt-repository ppa:bitcoin/bitcoin &&  \
+    apt-get update && \
     apt-get install --yes \
     software-properties-common \   
     build-essential \
