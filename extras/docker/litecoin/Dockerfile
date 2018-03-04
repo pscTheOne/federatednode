@@ -1,4 +1,4 @@
-FROM FROM ubuntu:xenial
+FROM ubuntu:xenial
 
 MAINTAINER liteparty Developers <contact@liteparty.io>
 
