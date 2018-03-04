@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM debian:stretch
 
 MAINTAINER liteparty Developers <contact@liteparty.io>
 
@@ -19,6 +19,7 @@ RUN add-apt-repository ppa:bitcoin/bitcoin && \
     apt-get update && \
     apt-get install --yes \
       software-properties-common \
+      python-software-properties \
       build-essential \
       libtool \
       autotools-dev \
