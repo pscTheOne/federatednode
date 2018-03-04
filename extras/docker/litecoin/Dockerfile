@@ -45,7 +45,7 @@ RUN ./autogen.sh && \
     make install
 
 
-EXPOSE 9332 9333 19332 19333
+EXPOSE 9332 9333 19332 19335
 
 # NOTE: Defaults to running on mainnet, specify -e TESTNET=1 to start up on testnet
 ENTRYPOINT ["/usr/local/bin/start.sh"]
