@@ -20,6 +20,7 @@ RUN add-apt-repository ppa:bitcoin/bitcoin && \
     apt-get install --yes \
       software-properties-common \
       python-software-properties \
+      python3-software-properties \       
       build-essential \
       libtool \
       autotools-dev \
