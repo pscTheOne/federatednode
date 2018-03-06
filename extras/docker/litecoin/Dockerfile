@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM counterparty/base
 
 MAINTAINER liteparty Developers <contact@liteparty.io>
 
@@ -13,14 +13,10 @@ COPY start.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
 RUN chown litecoin:litecoin /home/litecoin/.litecoin
 RUN chown litecoin:litecoin /home/litecoin/.litecoin/litecoin.conf
-RUN apt-get update && \
-    apt-get install --yes \
-      software-properties-common
 #Add bitcoin ppa and install tools needed to fetch and compile litecoin.
 RUN add-apt-repository ppa:bitcoin/bitcoin &&  \
     apt-get update && \
-    apt-get install --yes \
-    software-properties-common \   
+    apt-get install --yes \ 
     build-essential \
     libtool \
     autotools-dev \
